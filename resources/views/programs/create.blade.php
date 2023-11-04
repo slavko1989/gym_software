@@ -1,3 +1,4 @@
+@auth
 @extends('gym_template/head')
 @section('title','GYM SOFTWARE')
 @section('links')
@@ -42,3 +43,6 @@
 
 
 @include('gym_template/footer')
+@else
+{{ "go away" }}
+@endauth

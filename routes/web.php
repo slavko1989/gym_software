@@ -40,11 +40,11 @@ Route::middleware([
 
 });*/
 
-Route::controller(HomeController::class)->group(function(){
+Route::controller(HomeController::class)->middleware(['auth','user_role'])->group(function(){
     Route::get('gym_template/index','index');
 });
 
-Route::controller(MemberController::class)->group(function(){
+Route::controller(MemberController::class)->middleware(['auth','user_role'])->group(function(){
     Route::get('members/create','create');
     Route::post('members/create','store');
     Route::get('members/singl/{id}','singl_member');
@@ -53,7 +53,7 @@ Route::controller(MemberController::class)->group(function(){
     Route::post('members/edit/{id}','update');
 });
 
-Route::controller(CompanyController::class)->group(function(){
+Route::controller(CompanyController::class)->middleware(['auth','user_role'])->group(function(){
     Route::get('company/create','create');
     Route::post('company/create','store');
     Route::get('company/delete/{id}','delete');
@@ -61,7 +61,7 @@ Route::controller(CompanyController::class)->group(function(){
     Route::post('company/edit/{id}','update');
 });
 
-Route::controller(CatController::class)->group(function(){
+Route::controller(CatController::class)->middleware(['auth','user_role'])->group(function(){
     Route::get('cat/create','create');
     Route::post('cat/create','store');
     Route::get('cat/delete/{id}','delete');
@@ -69,7 +69,7 @@ Route::controller(CatController::class)->group(function(){
     Route::post('cat/edit/{id}','update');
 });
 
-Route::controller(ProgramController::class)->group(function(){
+Route::controller(ProgramController::class)->middleware(['auth','user_role'])->group(function(){
     Route::get('programs/create','create');
     Route::post('programs/create','store');
     Route::get('programs/delete/{id}','delete');
@@ -77,7 +77,7 @@ Route::controller(ProgramController::class)->group(function(){
     Route::post('programs/edit/{id}','update');
 });
 
-Route::controller(LocationController::class)->group(function(){
+Route::controller(LocationController::class)->middleware(['auth','user_role'])->group(function(){
     Route::get('locations/create','create');
     Route::post('locations/create','store');
     Route::get('locations/delete/{id}','delete');
@@ -86,7 +86,7 @@ Route::controller(LocationController::class)->group(function(){
     
 });
 
-Route::controller(TrainerController::class)->group(function(){
+Route::controller(TrainerController::class)->middleware(['auth','user_role'])->group(function(){
     Route::get('trainers/create','create');
     Route::post('trainers/create','store');
     Route::get('trainers/delete/{id}','delete');

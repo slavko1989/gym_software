@@ -27,6 +27,16 @@ class ProgramController extends Controller
     public function delete($id){
         Program::where('id',$id)->firstOrFail()->delete();
         return redirect()->back()->with('danger_message','Program are deleted');
+
+        /*$del = Program::where('id',$id);
+
+        if(!$del){
+            return response()->json(['message'=>'Not del'],404);
+        }
+            $del->firstOrFail()->delete();
+        return response()->json(['message'=>'del'])->with('danger_message','Program are deleted');*/
+
+
     }
 
     public function edit($id){

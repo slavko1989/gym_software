@@ -49,11 +49,8 @@
 
         <li><p>Created at <span style="color: red;font-family: monospace;font-weight: bolder;">{{ $member->created_at }}</span></p></li>
         <li><p>Updated at <span style="color: red;font-family: monospace;font-weight: bolder;">{{ $member->updated_at }}</span></p></li>
-
-         @if($member->cat_id == 0 && $member->trainer_id == 0 )
-          
-          @else
-          <li><p> Full price: <span style="color: brown;">
+@if($member->cat_id !=0 && $member->trainer_id !=0 )
+        <li><p> Full price: <span style="color: brown;">
 
 
             <?php 

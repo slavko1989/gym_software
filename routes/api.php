@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProgramController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+/*Route::controller(ProgramController::class)->group(function(){
+    Route::get('programs/create','create');
+    Route::post('programs/create','store');
+    Route::get('programs/delete/{id}','delete');
+    Route::get('programs/edit/{id}','edit');
+    Route::post('programs/edit/{id}','update');
+});*/

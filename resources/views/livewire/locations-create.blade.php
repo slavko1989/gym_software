@@ -24,8 +24,8 @@
        <td>{{ $loc->country }}</td>
        <td>{{ $loc->city }}</td>
        <td>{{ $loc->street }}</td>
-       <td>{{ $loc->email }}</td>
        <td>{{ $loc->phone }}</td>
+       <td>{{ $loc->email }}</td>
        <td>
         <a href="{{ url('locations/delete/'.$loc->id) }}"><span class="badge bg-danger">Delete</span></a> 
         <a href="{{ url('locations/edit/'.$loc->id) }}"><span class="badge bg-info">Edit</span></a></td>
