@@ -1,4 +1,4 @@
-@props(['cat','comp','t'])
+@props(['cat','comp','t','l'])
 <p style='color: darkblue;'>Add new  members</p>  
 @if(session()->has('message'))
 
@@ -132,7 +132,7 @@ enctype="multipart/form-data">
   </div>
 </div>
 
-  <div class="col">
+<div class="col">
   <div class="form-outline">
     <label for="name" class="form-label">Company:</label>
     <select type="text" class="form-control" name="comp_id" value="{{ old('comp_id') }}">
@@ -147,6 +147,7 @@ enctype="multipart/form-data">
     @enderror
   </div>
 </div>
+
 
   <div class="col">
   <div class="form-outline">
@@ -177,6 +178,23 @@ enctype="multipart/form-data">
     @enderror
   </div>
 </div>
+</div>
+
+
+<div class="col">
+  <div class="form-outline">
+    <label for="name" class="form-label">Location:</label>
+    <select type="text" class="form-control" name="location_id" value="{{ old('location_id') }}">
+      
+      <option>Choose!</option>
+      @foreach($l as $l)
+      <option value="{{ $l->id }}">{{ $l->city }} {{ $l->street }}</option>
+      @endforeach
+    </select>
+    @error('location_id')
+        <p style="color: black;">{{ $message }}</p>
+    @enderror
+  </div>
 </div>
 
 <div class="col">

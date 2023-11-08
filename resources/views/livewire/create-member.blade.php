@@ -2,7 +2,7 @@
   <h2 style="font: !important;font-size: 20px;font-weight: bolder;">Gym Members</h2>
 
 
-  <x-formMembers :cat='$cat'  :comp='$comp'  :t='$t'></x-formMembers>
+  <x-formMembers :cat='$cat'  :comp='$comp'  :t='$t' :l='$l'></x-formMembers>
 
 
   <table class="table table-striped">

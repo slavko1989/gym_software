@@ -3,16 +3,34 @@
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
       
       <tr>
-        @foreach($expiredDate as $ex)
+        @foreach ($expiredDate as $member)
+    @php
+        $expirationDate = Carbon\Carbon::parse($member->date_ex);
+        $today = Carbon\Carbon::now();
+        $fiveDaysFromNow = $today->addDays(5);
+    @endphp
 
-
-        <td style="color: black;font-weight: bolder;">
-<img class="card-img-top" src="{{ asset('members_img/'.$ex->profile) }}" alt="Card image" style="width:70px;height:70px;border-radius:8px;">
-
-          {{ $ex->name }}</td>
-        <td>Expiration date: {{ $ex->date_ex }}</td>
+    @if ($expirationDate->lessThanOrEqualTo($today)) 
         
-        @endforeach
+
+       <td style="color: black;font-weight: bolder;">
+        <p>Članarina je istekla za člana</p>
+<img class="card-img-top" src="{{ asset('members_img/'.$member->profile) }}" alt="Card image" style="width:70px;height:70px;border-radius:8px;">
+
+          {{ $member->name }} {{ $member->date_ex }}</td>
+
+
+
+    @elseif ($expirationDate->lessThanOrEqualTo($fiveDaysFromNow))
+        
+<p>Članarina ističe za člana za pet dana</p>
+        <img class="card-img-top" src="{{ asset('members_img/'.$member->profile) }}" alt="Card image" style="width:70px;height:70px;border-radius:8px;">
+
+          {{ $member->name }}</td>
+        <td>Expiration date: {{ $member->date_ex }}</td>
+    @endif
+@endforeach
+
       </tr>
 
     </table><br>

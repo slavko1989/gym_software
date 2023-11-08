@@ -27,7 +27,7 @@ class HomeController extends Controller
                 'incomes'=>Member::join('categories', 'members.cat_id', '=', 'categories.id')->select(DB::raw('YEAR(date_begin) as year'), DB::raw('MONTH(date_begin) as month'), DB::raw('SUM(price) as total'))
              ->groupBy('year', 'month')
              ->get()
-            ]
-    );
+            ]);
     }
+
 }

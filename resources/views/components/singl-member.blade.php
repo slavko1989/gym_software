@@ -9,7 +9,7 @@
         <li><p>Category <span style="color: red;font-family: monospace;font-weight: bolder;">{{ $member->categories->name }}-{{ $member->categories->price }}$</span> </p></li>
         <li><p>Date begin <span style="color: red;font-family: monospace;font-weight: bolder;">{{ $member->date_begin }} </span></p></li>
         <li><p>Date exired <span style="color: red;font-family: monospace;font-weight: bolder;">{{ $member->date_ex }} </span></p></li>
-
+        <li><p>Location <span style="color: red;font-family: monospace;font-weight: bolder;">{{ $member->location->city }} {{ $member->location->street }}</span></p></li>
         <li><p>Status 
           @if($member->status == 1)
           <span style="color: red;">Active</span>

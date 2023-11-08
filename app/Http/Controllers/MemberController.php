@@ -39,6 +39,7 @@ class MemberController extends Controller
         $member->status = $request->status;
         $member->payment = $request->payment;
         $member->trainer_id = $request->trainer_id;
+        $member->location_id = $request->location_id;
 
         $image = $request->profile;
         if($image){
@@ -95,6 +96,7 @@ class MemberController extends Controller
         $member->payment = $request->payment;
         $member->comp_id = $request->comp_id;
         $member->trainer_id = $request->trainer_id;
+        $member->location_id = $request->location_id;
         $member->update();
 
         return redirect()->back()->with('message','Member are updated');
