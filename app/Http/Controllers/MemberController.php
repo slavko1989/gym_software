@@ -40,6 +40,7 @@ class MemberController extends Controller
         $member->payment = $request->payment;
         $member->trainer_id = $request->trainer_id;
         $member->location_id = $request->location_id;
+        $member->web_card = $request->web_card;
 
         $image = $request->profile;
         if($image){

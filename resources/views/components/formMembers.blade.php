@@ -153,8 +153,8 @@ enctype="multipart/form-data">
   <div class="form-outline">
     <label for="name" class="form-label">Payment:</label>
     <select type="text" class="form-control" name="payment" value="{{ old('payment') }}">
-      <option>Choose!</option>
-      <option value="0">On waiting</option>
+      
+      <option value="0">/</option>
       <option value="1">Paid</option>
       <option value="2">Not Paid</option>
     </select>
@@ -168,8 +168,8 @@ enctype="multipart/form-data">
   <div class="form-outline">
     <label for="name" class="form-label">Status:</label>
     <select type="text" class="form-control" name="status" value="{{ old('status') }}">
-      <option>Choose! </option>
-      <option value="0">Default</option>
+      
+      <option value="0">/</option>
       <option value="1">Active</option>
       <option value="2">Deactive</option>
     </select>
@@ -178,6 +178,21 @@ enctype="multipart/form-data">
     @enderror
   </div>
 </div>
+
+  <div class="col">
+  <div class="form-outline">
+    <label for="name" class="form-label">Web card:</label>
+    <select type="text" class="form-control" name="web_card" value="{{ old('web_card') }}">
+      
+      <option value="0">/</option>
+      <option value="1">Web card</option>
+    </select>
+    @error('web_card')
+        <p style="color: black;">{{ $message }}</p>
+    @enderror
+  </div>
+</div>
+
 </div>
 
 

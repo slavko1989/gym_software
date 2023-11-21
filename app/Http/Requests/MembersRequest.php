@@ -35,8 +35,6 @@ class MembersRequest extends FormRequest
             'date_begin'=>'required',
             'date_ex'=>'required',
             'cat_id'=>'required',
-            'status'=>'required',
-            'payment'=>'required',
             'location_id'=>'required'
         ];
     }

@@ -9,6 +9,8 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\OnlinePaymentController;
+
 
 
 /*
@@ -42,6 +44,14 @@ Route::middleware([
 
 Route::controller(HomeController::class)->middleware(['auth','user_role'])->group(function(){
     Route::get('gym_template/index','index');
+
+});
+
+Route::controller(OnlinePaymentController::class)->middleware(['auth','web_card'])->group(function(){
+    Route::get('online_payment/online_members_payment','create');
+    Route::post('online_payment/online_members_payment','store');
+    Route::get('members/member_web_card/{id}','member_web_card');
+    Route::get('members/member_web_card_pdf/{id}','member_web_card_pdf');
 });
 
 Route::controller(MemberController::class)->middleware(['auth','user_role'])->group(function(){

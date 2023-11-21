@@ -1,36 +1,28 @@
 <div class="w3-container">
     <h5>Expired in 5 days tickets</h5>
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
-      
-      <tr>
-        @foreach ($expiredDate as $member)
-    @php
-        $expirationDate = Carbon\Carbon::parse($member->date_ex);
-        $today = Carbon\Carbon::now();
-        $fiveDaysFromNow = $today->addDays(5);
-    @endphp
+        <tr>
+            @foreach ($expiredDate as $member)
+                @php
+                    $expirationDate = Carbon\Carbon::parse($member->date_ex);
+                    $today = Carbon\Carbon::now();
+                    $fiveDaysFromNow = $today->addDays(5);
+                @endphp
 
-    @if ($expirationDate->lessThanOrEqualTo($today)) 
-        
-
-       <td style="color: black;font-weight: bolder;">
-        <p>Članarina je istekla za člana</p>
-<img class="card-img-top" src="{{ asset('members_img/'.$member->profile) }}" alt="Card image" style="width:70px;height:70px;border-radius:8px;">
-
-          {{ $member->name }} {{ $member->date_ex }}</td>
-
-
-
-    @elseif ($expirationDate->lessThanOrEqualTo($fiveDaysFromNow))
-        
-<p>Članarina ističe za člana za pet dana</p>
-        <img class="card-img-top" src="{{ asset('members_img/'.$member->profile) }}" alt="Card image" style="width:70px;height:70px;border-radius:8px;">
-
-          {{ $member->name }}</td>
-        <td>Expiration date: {{ $member->date_ex }}</td>
-    @endif
-@endforeach
-
+                <td>
+                    @if ($expirationDate->equalTo($today)) 
+                        <p style="color: black; font-weight: bolder;">Članarina je istekla za člana</p>
+                        <img class="card-img-top" src="{{ asset('members_img/'.$member->profile) }}" alt="Card image" style="width:70px;height:70px;border-radius:8px;">
+                        {{ $member->name }} {{ $member->date_ex }}
+                    @elseif ($expirationDate->lessThanOrEqualTo($fiveDaysFromNow))
+                        <p>Članarina ističe za člana za pet dana</p>
+                        <img class="card-img-top" src="{{ asset('members_img/'.$member->profile) }}" alt="Card image" style="width:70px;height:70px;border-radius:8px;">
+                        {{ $member->name }}
+                        <br>Expiration date: {{ $expirationDate->format('Y-m-d') }}
+                    @endif
+                </td>
+            @endforeach
+ 
       </tr>
 
     </table><br>

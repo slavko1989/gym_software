@@ -9,13 +9,14 @@ use App\Models\Categories;
 use App\Models\Companies;
 use App\Models\Trainer;
 use App\Models\Locations;
+use App\Models\User;
 
 
 class Member extends Model
 {
     use HasFactory;
     //protected $table = ['members'];
-    protected $fillable =['name','email','phone','country','city','address','profile','date_begin','date_ex','cat_id','comp_id','status','payment','trainer_id','location_id'];
+    protected $fillable =['name','email','phone','country','city','address','profile','date_begin','date_ex','cat_id','comp_id','status','payment','trainer_id','location_id','web_card','user_id'];
 
       public function categories() : BelongsTo{
         return $this->belongsTo(Categories::class,'cat_id');
@@ -31,6 +32,10 @@ class Member extends Model
 
      public function location() : BelongsTo{
         return $this->belongsTo(Locations::class,'location_id');
+    }
+
+     public function user() : BelongsTo{
+        return $this->belongsTo(User::class,'user_id');
     }
 
 }

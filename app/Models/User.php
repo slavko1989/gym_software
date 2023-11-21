@@ -11,6 +11,9 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Appp\Models\Role;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HaMany;
+
+use App\Models\Member;
 
 class User extends Authenticatable
 {
@@ -65,5 +68,9 @@ class User extends Authenticatable
 
         return $this->hasOne(Role::class,'role_id');
 
+    }
+
+    public function members() :HasMany{
+        return $this->hasMany(Member::class);
     }
 }

@@ -32,6 +32,7 @@
     <a href="{{ url('company/create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Comapnies</a>
     <a href="{{ url('locations/create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  Locations</a>
     <a href="{{ url('trainers/create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Trainers</a>
-    <a href="{{ url('programs/create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Programs</a><br><br>
+    <a href="{{ url('programs/create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Programs</a>
+    <a href="{{ url('') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Web card members</a><br><br>
   </div>
 </nav>
