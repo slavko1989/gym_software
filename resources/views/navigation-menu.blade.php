@@ -5,9 +5,8 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ url('gym_template/index') }}">
                             <img src="{{ asset('gym_img/logo.jpg') }}" style="width:70px;height: 70px;border-radius: 30px;">
-
                     </a>
                 </div>
 

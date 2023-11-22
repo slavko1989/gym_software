@@ -10,6 +10,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\OnlinePaymentController;
+use App\Http\Controllers\WebCardMailTrap;
 
 
 
@@ -44,6 +45,13 @@ Route::middleware([
 
 Route::controller(HomeController::class)->middleware(['auth','user_role'])->group(function(){
     Route::get('gym_template/index','index');
+
+});
+
+Route::controller(WebCardMailTrap::class)->group(function(){
+    Route::get('members/send_card','card_page');
+
+    Route::post('members/send_card','send_card_mail');
 
 });
 
@@ -106,3 +114,4 @@ Route::controller(TrainerController::class)->middleware(['auth','user_role'])->g
 
     
 });
+
