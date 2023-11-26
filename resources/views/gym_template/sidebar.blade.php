@@ -11,7 +11,7 @@
   <div class="w3-container w3-row">
     @auth
     <div class="w3-col s4">
-      <img src="/w3images/avatar2.png" class="w3-circle w3-margin-right" style="width:46px">
+      <img src="{{  auth()->user()->profile_photo_url }}" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar">
       @if(auth()->user()->role=='1')
@@ -34,5 +34,7 @@
     <a href="{{ url('trainers/create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Trainers</a>
     <a href="{{ url('programs/create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Programs</a>
     <a href="{{ url('') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Web card members</a><br><br>
+    <a href="{{ url('gym_template/notification') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Notification
+    </a><br><br>
   </div>
 </nav>

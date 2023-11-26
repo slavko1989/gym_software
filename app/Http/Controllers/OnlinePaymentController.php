@@ -11,6 +11,8 @@ use Auth;
 use PDF;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\WebCardMail;
+use App\Notifications\MemberCreateNotification;
+use App\Models\User;
 
 class OnlinePaymentController extends Controller
 {
@@ -25,7 +27,7 @@ class OnlinePaymentController extends Controller
         
         $member = new Member;
 
-$id_u = auth::user()->id;
+        $id_u = auth::user()->id;
 
         $member->name = $request->name;
         $member->email = $request->email;
@@ -53,11 +55,13 @@ $id_u = auth::user()->id;
 
         $member->save();
 
+        auth()->user()->notify(new MemberCreateNotification($member->name));
+
         Mail::send('emails.web_card_mail', ['member' => $member], function($message){
                 $message->to('slavko.slave1989@gmail.com','bull developer')->subject('Member web card created');
             });
 
-        return redirect()->back()->with('message','Member are created');
+        return redirect()->back()->with('message','You are created web card');
     
     }
 
@@ -81,6 +85,4 @@ $id_u = auth::user()->id;
 
     }
 
-   
-            
 }

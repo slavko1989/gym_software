@@ -39,12 +39,13 @@ Route::middleware([
     })->name('dashboard');
 });
 
-/*Route::controller(HomeController::class)->middlware(['admin'])->group(function(){
-
-});*/
 
 Route::controller(HomeController::class)->middleware(['auth','user_role'])->group(function(){
     Route::get('gym_template/index','index');
+    Route::get('gym_template/notification','listNotification');
+    Route::get('gym_template/notification/{id}','markAsRead');
+    //Route::get('gym_template/notification','markAllAsRead')->name('markAllAsRead');
+
 
 });
 
@@ -60,6 +61,7 @@ Route::controller(OnlinePaymentController::class)->middleware(['auth','web_card'
     Route::post('online_payment/online_members_payment','store');
     Route::get('members/member_web_card/{id}','member_web_card');
     Route::get('members/member_web_card_pdf/{id}','member_web_card_pdf');
+
 });
 
 Route::controller(MemberController::class)->middleware(['auth','user_role'])->group(function(){

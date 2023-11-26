@@ -10,11 +10,13 @@ use App\Models\Companies;
 use App\Models\Trainer;
 use App\Models\Locations;
 use App\Models\User;
+use Illuminate\Notifications\Notifiable;
 
 
 class Member extends Model
 {
     use HasFactory;
+    use Notifiable;
     //protected $table = ['members'];
     protected $fillable =['name','email','phone','country','city','address','profile','date_begin','date_ex','cat_id','comp_id','status','payment','trainer_id','location_id','web_card','user_id'];
 

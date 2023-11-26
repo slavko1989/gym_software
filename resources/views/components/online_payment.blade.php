@@ -1,3 +1,14 @@
+@extends('gym_template/head')
+@section('title','GYM SOFTWARE')
+@section('links')
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+
 @props(['cat','comp','t','l'])
 
 @if(session()->has('message'))
@@ -30,6 +41,8 @@ margin: 30px;
 '>CREATE YOUR CARD<br> 
 BEFORE YOU GO TO THE GYM!
 PAY IN THE GYM.<br>
+
+
 
 @if(Auth::check())
 
@@ -235,4 +248,5 @@ enctype="multipart/form-data">
   <button type="submit" class="btn btn-primary" style="width: 100%;font-size: 20px;font-weight: bolder;margin-top: 4px;">CREATE CARD</button>
 </form>
 </div>
+
 
