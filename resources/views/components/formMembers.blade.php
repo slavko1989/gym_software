@@ -231,7 +231,7 @@ enctype="multipart/form-data">
     @enderror
   </div>
 </div>
-
+  <input type="hidden" name="user_id" value="2">
   <button type="submit" class="btn btn-primary">ADD</button>
 </form>
 </div>

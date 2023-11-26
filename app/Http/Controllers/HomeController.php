@@ -37,35 +37,16 @@ class HomeController extends Controller
 
      public function listNotification(){
 
-            
             $notifications = DB::table('notifications')->get();
             $totalNotifications = DB::table('notifications')->count();
-            //$notifications = auth()->user()->unreadNotifications;
             return view('gym_template/notification' , compact('notifications','totalNotifications'));
     }
 
     public function markAsRead($id){
 
-        /*$notification = Auth::user()->notifications()->find($id);
-
-        if($notification){
-            $notification->markAsRead();
-        }*/
-
         DB::table('notifications')->where('id', $id)->update(['read_at' => now()]);
-
         return back();
     }
 
-    /*public function markAllAsRead(){
-
-       dd(Auth::user()->unreadNotifications->markAsRead());
-
-        //return redirect()->back();
-    }*/
-
- 
-
-  
 
 }

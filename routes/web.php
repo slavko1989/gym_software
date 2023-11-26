@@ -44,14 +44,12 @@ Route::controller(HomeController::class)->middleware(['auth','user_role'])->grou
     Route::get('gym_template/index','index');
     Route::get('gym_template/notification','listNotification');
     Route::get('gym_template/notification/{id}','markAsRead');
-    //Route::get('gym_template/notification','markAllAsRead')->name('markAllAsRead');
 
 
 });
 
 Route::controller(WebCardMailTrap::class)->group(function(){
     Route::get('members/send_card','card_page');
-
     Route::post('members/send_card','send_card_mail');
 
 });
@@ -71,6 +69,7 @@ Route::controller(MemberController::class)->middleware(['auth','user_role'])->gr
     Route::get('members/delete/{id}','delete');
     Route::get('members/edit/{id}','edit');
     Route::post('members/edit/{id}','update');
+    Route::get('members/web_card_members_in_admin_panel','web_card_admin_panel');
 });
 
 Route::controller(CompanyController::class)->middleware(['auth','user_role'])->group(function(){

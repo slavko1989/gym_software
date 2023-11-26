@@ -34,50 +34,8 @@
       <div class="w3-twothird" >
         
 
+        <livewire:web-card-admin-panel>
 
-
-
-<p>Total notofications: {{ $totalNotifications }}</p>
-@if(auth()->user()->role=="1")
-    @forelse($notifications as $notification)
-
-
-@php
-    $notificationData = json_decode($notification->data);
-@endphp
-
-        <div class="alert {{ $notification->read_at ? 'alert-read' : 'alert-success' }}" role="alert">
-            <p>{{ $notification->created_at }}</p>
-            <p lass="notification-text">
-               
-                    {{  json_decode($notification->data)->data }}
-            
-                @if($notification->read_at)
-                    <p style="color: black;font-weight: bolder;">{{ 'you read this' }}</p>
-                @else
-                <a href="{{ url('gym_template/notification/' . $notification->id)  }}" class="float-right mark-as-read">
-                    Mark as read
-                </a>
-                
-                @endif
-            </p>
-        </div>
-    @empty
-        There are no new notifications
-    @endforelse
-@endif
-
-<style>
-    .alert-read {
-    background-color: gray;
-}
-.alert-read .notification-text {
-        color: #777;
-    }
-</style>
-            
-        
-         
 
       </div>
     </div>
@@ -92,11 +50,3 @@
 {{ "go away" }}
 @endauth
 
-
-
-
-
-
-   
-
-   

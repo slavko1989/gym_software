@@ -16,6 +16,11 @@ class MemberController extends Controller
         return view('members/create');
     }
 
+    public function web_card_admin_panel(){
+        
+        return view('members/web_card_members_in_admin_panel');
+    }
+
     public function singl_member(Request $request,$id){
 
         $member = Member::find($id);
@@ -41,6 +46,7 @@ class MemberController extends Controller
         $member->trainer_id = $request->trainer_id;
         $member->location_id = $request->location_id;
         $member->web_card = $request->web_card;
+        $member->user_id = $request->user_id;
 
         $image = $request->profile;
         if($image){

@@ -12,7 +12,7 @@ class MemberCreateNotification extends Notification
 {
     use Queueable;
 
-    protected $name;
+    protected $member;
     /**
      * Create a new notification instance.
      *
@@ -20,7 +20,7 @@ class MemberCreateNotification extends Notification
      */
     public function __construct($name)
     {
-        $this->name = $name;
+        $this->member = $member;
     }
 
     /**
@@ -57,7 +57,10 @@ class MemberCreateNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'data'=>'User create his member card with this name ' . $this->name . '
+            
+                'message' => 'User created his member card with this name ' . $this->name 
+            
+            
         ];
     }
 }
