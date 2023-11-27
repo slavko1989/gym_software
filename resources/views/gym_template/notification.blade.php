@@ -41,16 +41,20 @@
 @if(auth()->user()->role=="1")
     @forelse($notifications as $notification)
 
-
-@php
-    $notificationData = json_decode($notification->data);
-@endphp
-
+ @php
+        $data = json_decode($notification->data);
+    @endphp
         <div class="alert {{ $notification->read_at ? 'alert-read' : 'alert-success' }}" role="alert">
             <p>{{ $notification->created_at }}</p>
             <p lass="notification-text">
+
+                
                
-                    {{  json_decode($notification->data)->data }}
+                    {{  
+                        $data->message ?? 'no mess'
+
+                    }}
+                   
             
                 @if($notification->read_at)
                     <p style="color: black;font-weight: bolder;">{{ 'you read this' }}</p>

@@ -18,7 +18,7 @@ class MemberCreateNotification extends Notification
      *
      * @return void
      */
-    public function __construct($name)
+    public function __construct($member)
     {
         $this->member = $member;
     }
@@ -58,7 +58,7 @@ class MemberCreateNotification extends Notification
     {
         return [
             
-                'message' => 'User created his member card with this name ' . $this->name 
+                'message' => 'User created his member card with this name ' . $this->member
             
             
         ];

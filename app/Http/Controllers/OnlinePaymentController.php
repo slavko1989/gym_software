@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\FileUploadService;
+
 use Illuminate\Http\Request;
 use App\Http\Requests\MembersRequest;
 use App\Models\Member;
@@ -23,7 +25,7 @@ class OnlinePaymentController extends Controller
         return view('online_payment/online_members_payment',compact('member'));
     }
 
- public function store(MembersRequest $request){
+ public function store(MembersRequest $request, FileUploadService $fileUploadService){
         
         $member = new Member;
 
@@ -46,12 +48,17 @@ class OnlinePaymentController extends Controller
         $member->web_card = $request->web_card;
         $member->user_id = $id_u;
 
-        $image = $request->profile;
+        /*$image = $request->profile;
         if($image){
         $imgname = time().'.'.$image->getClientOriginalExtension();
         $request->profile->move('members_img',$imgname);
-        $member->profile=$imgname;
-        }
+        $member->profile=$imgname; } */
+
+
+        $fileUploadService->uploadFile($request, $member);
+            
+
+        
 
         $member->save();
 

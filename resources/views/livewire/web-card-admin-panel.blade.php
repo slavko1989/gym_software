@@ -20,7 +20,7 @@
     </thead>
     <tbody>
       @foreach($web_card as $member)
-      @if($member->web_card==="1")
+      @if($member->web_card=="1")
       <tr>
        
        <td>{{ $member->name }}</td>
