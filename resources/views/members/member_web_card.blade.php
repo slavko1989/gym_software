@@ -9,7 +9,7 @@
 
 <div class="container mt-3">
 	@if($card && $card->user)
-    <h1>Podaci o kartici teretane za korisnika: <span style="color: darkblue;">{{ $card->user->name }}</span></h1>
+    <h1>Info about gym member: <span style="color: darkblue;">{{ $card->user->name }}</span></h1>
 
   
   <div class="card" style="width:400px">

@@ -29,8 +29,18 @@
 @endif
 
 @if(Auth::check())
-    {{ "welcome: " . Auth::user()->name }}<br>
+    {{ "welcome: " . Auth::user()->name }}
+
+
+
+<a href="{{ url('members/member_web_card/'.
+
+
+auth::user()->id) }}">View your card</a></p> 
 @endif
+
+    <br>
+
 
 <div style="background-color: violet;border-radius:20px;margin: 10px;padding: 10px;width: 100%;  display: flex; justify-content: center; align-items: center;">
 
@@ -41,18 +51,7 @@ margin: 30px;
 '>CREATE YOUR CARD<br> 
 BEFORE YOU GO TO THE GYM!
 PAY IN THE GYM.<br>
-
-
-
-@if(Auth::check())
-
-<a href="{{ url('members/member_web_card/'.
-
-
-auth::user()->id) }}">View your card</a></p> 
-@endif
-
-
+OR PAY WITH YOU CREDICT CARD<br>
 
 <form action="{{ url('online_payment/online_members_payment') }}" method="post" 
 enctype="multipart/form-data">
@@ -192,11 +191,12 @@ enctype="multipart/form-data">
 
   <div class="col">
   <div class="form-outline">
-    <label for="name" class="form-label">Web card:</label>
+    <label for="name" class="form-label">Payment:</label>
     <select type="text" class="form-control" name="web_card" value="{{ old('web_card') }}">
       
       <option value="0">Must choose</option>
-      <option value="1">Create card from web</option>
+      <option value="1">Create card/Pay in the gym</option>
+      <option value="2">Credict Card</option>
 
     </select>
     @error('web_card')
@@ -245,7 +245,13 @@ enctype="multipart/form-data">
   </div>
 </div>
 
-  <button type="submit" class="btn btn-primary" style="width: 100%;font-size: 20px;font-weight: bolder;margin-top: 4px;">CREATE CARD</button>
+<div>
+  <button type="submit" class="btn btn-primary" style="width: 49%;font-size: 20px;font-weight: bolder;margin-top: 4px;">CREATE CARD/PAY IN THE GYM</button>
+
+  <a href="{{ route('stripe') }}" class="btn btn-primary" style="width: 49%;font-size: 20px;font-weight: bolder;margin-top: 4px;">PAY WITH CREDICT CAARD</a>
+
+  
+</div>
 </form>
 </div>
 

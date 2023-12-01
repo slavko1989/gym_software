@@ -59,6 +59,9 @@ Route::controller(OnlinePaymentController::class)->middleware(['auth','web_card'
     Route::post('online_payment/online_members_payment','store');
     Route::get('members/member_web_card/{id}','member_web_card');
     Route::get('members/member_web_card_pdf/{id}','member_web_card_pdf');
+    Route::post('online_payment/payment','payment')->name('stripe');
+    Route::get('online_payment/payment','stripe_view');
+    
 
 });
 
