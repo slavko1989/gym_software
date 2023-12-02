@@ -19,6 +19,7 @@
                         <img class="card-img-top" src="{{ asset('members_img/'.$member->profile) }}" alt="Card image" style="width:70px;height:70px;border-radius:8px;">
                         {{ $member->name }}
                         <br>Expiration date: {{ $expirationDate->format('Y-m-d') }}
+                       
                     @endif
                 </td>
             @endforeach
@@ -26,18 +27,18 @@
       </tr>
 
     </table><br>
-    <button class="w3-button w3-dark-grey">View more   <i class="fa fa-arrow-right"></i></button>
+    
   </div>
   <hr>
 
   <div class="w3-container">
-    <h5>Earnings by year and month</h5>
+    <h5>Earnings by year/Click to see year by months</h5>
     <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
-      @foreach($incomes as $i)
+      @foreach($incomesByYear as $i)
       <tr>
         
-        <td>{{ $i->year }} . {{ $i->month }}</td>
-        <td>{{ $i->total }}$</td>
+        <td><a href="{{ url('members/incomes_by_year_month/'.$i->year) }}">{{ $i->year }}</a></td>
+        
        
       </tr>
        @endforeach

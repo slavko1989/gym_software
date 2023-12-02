@@ -26,10 +26,13 @@ class HomeController extends Controller
                 'latest'=>Member::orderBy('created_at', 'desc')->take(3)->get(),
                 'locations'=>Locations::count(),
                 'expiredDate'=>Member::whereDate('date_ex','>=',now())->whereDate('date_ex','<=',now()->addDays(5))->get(),
-
                 'incomes'=>Member::join('categories', 'members.cat_id', '=', 'categories.id')->select(DB::raw('YEAR(date_begin) as year'), DB::raw('MONTH(date_begin) as month'), DB::raw('SUM(price) as total'))
              ->groupBy('year', 'month')
              ->get(),
+             'incomesByYear' => Member::join('categories', 'members.cat_id', '=', 'categories.id')
+            ->select(DB::raw('YEAR(date_begin) as year'), DB::raw('SUM(price) as total'))
+            ->groupBy('year')
+            ->get()
              
 
             ]);
@@ -46,6 +49,22 @@ class HomeController extends Controller
 
         DB::table('notifications')->where('id', $id)->update(['read_at' => now()]);
         return back();
+    }
+
+     public function showMonths($year)
+    {
+        $member =Member::count();
+        $trainers = Trainer::count();
+        $prg = Program::count();
+        $locations = Locations::count();
+
+        $monthlyIncomes = Member::join('categories', 'members.cat_id', '=', 'categories.id')
+            ->select(DB::raw('MONTH(date_begin) as month'), DB::raw('SUM(price) as total'))
+            ->whereYear('date_begin', $year)
+            ->groupBy('month')
+            ->get();
+
+        return view('members/incomes_by_year_month',compact('monthlyIncomes', 'year','member','trainers','locations','prg'));
     }
 
 

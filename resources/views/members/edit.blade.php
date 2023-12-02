@@ -30,7 +30,7 @@
       <div class="w3-twothird">
         
 
-        <x-updateMember :edit='$edit' :cats='$cats' :comps='$comps'></x-updateMember>
+        <x-updateMember :edit='$edit' :cats='$cats' :comps='$comps' :lcn='$lcn' :trn="$trn"></x-updateMember>
 
 
       </div>

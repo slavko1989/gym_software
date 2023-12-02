@@ -69,7 +69,7 @@ class OnlinePaymentController extends Controller
     }else{
 
         Session::put('temp_member_data', $member);
-        Log::info('Sadržaj sesije nakon smeštanja temp_member_data: ' . print_r(Session::all(), true));
+        //Log::info('Sadržaj sesije nakon smeštanja temp_member_data: ' . print_r(Session::all(), true));
          return redirect('online_payment/payment');
     }
     
@@ -90,7 +90,7 @@ class OnlinePaymentController extends Controller
         ]);
 
         $payment = Session::get('temp_member_data');
-        Log::info('Sadržaj temp_member_data iz sesije: ' . print_r($payment, true));
+        //Log::info('Sadržaj temp_member_data iz sesije: ' . print_r($payment, true));
 
         if($payment instanceof Member){
             $payment->save();

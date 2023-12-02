@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\MembersRequest;
 use App\Models\Member;
 use App\Models\Categories;
+use App\Models\Trainer;
+use App\Models\Locations;
+use App\Models\Companies;
 use Carbon\Carbon;
 
 
@@ -71,15 +74,23 @@ class MemberController extends Controller
         return view('members/edit',
             ['edit'=>Member::find($id) ,
              'cats'=>Categories::all(),
-             'comps'=>Categories::all()
+             'comps'=>Companies::all(),
+             'trn'=>Trainer::all(),
+             'lcn'=>Locations::all()
             ]);
             
 
     }
 
-    public function update(MembersRequest $request,$id){
+    public function update(Request $request,$id){
 
         $member = Member::find($id);
+
+        
+         if ($request->email !== $member->email && Member::where('email', $request->email)->exists()) {
+        return redirect()->back()->withErrors(['email' => 'The email is already taken.']);
+    }
+
 
         $image = $request->profile;
         if($image){

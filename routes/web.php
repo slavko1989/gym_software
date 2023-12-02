@@ -44,6 +44,8 @@ Route::controller(HomeController::class)->middleware(['auth','user_role'])->grou
     Route::get('gym_template/index','index');
     Route::get('gym_template/notification','listNotification');
     Route::get('gym_template/notification/{id}','markAsRead');
+    Route::get('members/incomes_by_year_month/{year}','showMonths')->name('showMonths');
+
 
 
 });

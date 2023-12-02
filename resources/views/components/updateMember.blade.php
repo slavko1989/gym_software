@@ -1,4 +1,4 @@
- @props(['edit','cats','comps'])
+ @props(['edit','cats','comps','trn','lcn'])
 
   <p style='color: darkblue;'>Update member</p>  
 @if(session()->has('message'))
@@ -29,7 +29,7 @@
 
   <div class="mb-3 mt-3">
     <label for="name" class="form-label">Email:</label>
-    <input type="text" class="form-control" id="name"  name="email" value="{{ $edit->email }}">
+    <input type="text" class="form-control" id="name"  name="email" value="{{ $edit->email }}" readonly>
     @error('email')
         <p style="color: black;">{{ $message }}</p>
     @enderror
@@ -133,11 +133,39 @@
 
   <div class="mb-3 mt-3">
     <label for="name" class="form-label">Company:</label>
-    <select type="text" class="form-control" name="comp_id" value="{{ $edit->date_ex }}">
+    <select type="text" class="form-control" name="comp_id" value="{{ $edit->comp_id }}">
       
       <option value="0">No company</option>
       @foreach($comps as $comp)
       <option value="{{ $comp->id }}">{{ $comp->name }}</option>
+      @endforeach
+    </select>
+    @error('comp_id')
+        <p style="color: black;">{{ $message }}</p>
+    @enderror
+  </div>
+
+  <div class="mb-3 mt-3">
+    <label for="name" class="form-label">Location:</label>
+    <select type="text" class="form-control" name="location_id" value="{{ $edit->location_id }}">
+      
+      <option value="0">Must choose</option>
+      @foreach($lcn as $l)
+      <option value="{{ $l->id }}" style="color: black;">{{ $l->name }}</option>
+      @endforeach
+    </select>
+    @error('comp_id')
+        <p style="color: black;">{{ $message }}</p>
+    @enderror
+  </div>
+
+  <div class="mb-3 mt-3">
+    <label for="name" class="form-label">Trainer:</label>
+    <select type="text" class="form-control" name="trainer_id" value="{{ $edit->trainer_id }}">
+      
+      <option value="0">No trainer</option>
+      @foreach($trn as $t)
+      <option value="{{ $t->id }}">{{ $t->name }}</option>
       @endforeach
     </select>
     @error('comp_id')

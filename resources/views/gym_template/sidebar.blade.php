@@ -33,7 +33,8 @@
     <a href="{{ url('locations/create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  Locations</a>
     <a href="{{ url('trainers/create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  Trainers</a>
     <a href="{{ url('programs/create') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Programs</a>
-    <a href="{{ url('members/web_card_members_in_admin_panel') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Web card members</a><br><br>
+    <a href="{{ url('members/web_card_members_in_admin_panel') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Web card members</a>
+    <a href="{{ url('members/web_card_members_in_admin_panel') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Credict card payment</a>
     <a href="{{ url('gym_template/notification') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Notification
     </a><br><br>
   </div>

@@ -5,7 +5,7 @@
 
 
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Gym Software') }}
+            <a href="{{ url('online_payment/online_members_payment') }}">WEB CARD/CREDICT CARD</a>
         </h2>
     </x-slot>
 
